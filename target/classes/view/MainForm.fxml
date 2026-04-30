@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox prefHeight="700.0" prefWidth="900.0" spacing="20.0" style="-fx-background-color: linear-gradient(to bottom right, #53C4E9, #365179);" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainFormController">
+    <padding>
+        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+    </padding>
+
+    <VBox prefWidth="450.0" spacing="20.0" style="-fx-background-color: white; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 5); -fx-background-radius: 20;">
+        <padding><Insets bottom="30.0" left="30.0" right="30.0" top="30.0" /></padding>
+
+        <Label text="Saegis Campus Fee Calculator" textFill="#0A192F" wrapText="true">
+            <font><Font name="System Bold" size="28.0" /></font>
+        </Label>
+
+        <GridPane hgap="20" vgap="25">
+            <VBox spacing="5" GridPane.columnSpan="2" GridPane.rowIndex="1">
+                <Label text="Student Name" textFill="#555555"><font><Font name="System Bold" size="12.0" /></font></Label>
+                <JFXTextField fx:id="txtName" focusColor="#65bedd" promptText="e.g. Jane Doe" />
+            </VBox>
+
+            <VBox spacing="5" GridPane.rowIndex="2">
+                <Label text="Student ID" textFill="#555555"><font><Font name="System Bold" size="12.0" /></font></Label>
+                <JFXTextField fx:id="txtId" focusColor="#65bedd" />
+            </VBox>
+            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                <Label text="Programme" textFill="#555555"><font><Font name="System Bold" size="12.0" /></font></Label>
+                <JFXComboBox fx:id="cmbProgramme" focusColor="#65bedd" prefWidth="200.0" />
+            </VBox>
+
+            <VBox spacing="5" GridPane.rowIndex="3">
+                <Label text="Level (4-7)" textFill="#555555"><font><Font name="System Bold" size="12.0" /></font></Label>
+                <JFXComboBox fx:id="cmbLevel" focusColor="#65bedd" prefWidth="200.0" />
+            </VBox>
+            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                <Label text="Number of Modules" textFill="#555555"><font><Font name="System Bold" size="12.0" /></font></Label>
+                <JFXTextField fx:id="txtModules" focusColor="#65bedd" />
+            </VBox>
+
+            <VBox spacing="5" GridPane.rowIndex="4">
+                <Label text="Student Status" textFill="#555555"><font><Font name="System Bold" size="12.0" /></font></Label>
+                <JFXComboBox fx:id="cmbStatus" focusColor="#65bedd" prefWidth="200.0" />
+            </VBox>
+            <VBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                <Label text="Tutoring Hours (Max 10)" textFill="#555555"><font><Font name="System Bold" size="12.0" /></font></Label>
+                <JFXTextField fx:id="txtTutoring" focusColor="#65bedd" text="0" />
+            </VBox>
+         <columnConstraints>
+            <ColumnConstraints />
+            <ColumnConstraints />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+
+        <Region VBox.vgrow="ALWAYS" /> <JFXButton fx:id="btnCalculate" prefHeight="50.0" prefWidth="Infinity" style="-fx-background-color: #365179; -fx-text-fill: white; -fx-background-radius: 8;" text="Calculate Invoice">
+        <font><Font name="System Bold" size="14.0" /></font>
+    </JFXButton>
+    </VBox>
+
+    <VBox prefWidth="450.0" spacing="20.0" style="-fx-background-color: #F0F4F8; -fx-background-radius: 20;">
+        <padding><Insets bottom="30.0" left="30.0" right="30.0" top="30.0" /></padding>
+
+        <HBox alignment="CENTER_LEFT">
+            <VBox>
+                <Label text="Semester Invoice Summary" textFill="#0A192F"><font><Font name="System Bold" size="20.0" /></font></Label>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS" />
+            <JFXButton fx:id="btnDownload" style="-fx-background-color: white; -fx-background-radius: 5; -fx-border-color: #DDDDDD; -fx-border-radius: 5;" text="📥" />
+        </HBox>
+
+        <VBox spacing="5" style="-fx-background-color: white; -fx-background-radius: 8; -fx-padding: 15;">
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <Label fx:id="lblOutName" text="-" textFill="#0A192F"><font><Font name="System Bold" size="14.0" /></font></Label>
+                <Label fx:id="lblBadge" style="-fx-background-color: #E6F4EA; -fx-text-fill: #1E8E3E; -fx-padding: 2 8 2 8; -fx-background-radius: 10;" text="Load: PENDING">
+                    <font><Font name="System Bold" size="10.0" /></font>
+                </Label>
+            </HBox>
+            <Label fx:id="lblOutIdLevel" text="- • Level -" textFill="#666666" />
+        </VBox>
+
+        <VBox spacing="15" style="-fx-padding: 20 0 20 0;">
+            <HBox><Label text="Base Fee" textFill="#555555" /><Region HBox.hgrow="ALWAYS" /><Label fx:id="lblOutBase" text="LKR 0.00" textFill="#0A192F"><font><Font name="System Bold" size="13.0" /></font></Label></HBox>
+            <HBox><Label text="International Surcharge" textFill="#555555" /><Region HBox.hgrow="ALWAYS" /><Label fx:id="lblOutSurcharge" text="LKR 0.00" textFill="#0A192F"><font><Font name="System Bold" size="13.0" /></font></Label></HBox>
+            <HBox><Label text="Tutoring Fee" textFill="#555555" /><Region HBox.hgrow="ALWAYS" /><Label fx:id="lblOutTutoring" text="LKR 0.00" textFill="#0A192F"><font><Font name="System Bold" size="13.0" /></font></Label></HBox>
+            <HBox><Label text="Registration Fee" textFill="#555555" /><Region HBox.hgrow="ALWAYS" /><Label fx:id="lblOutReg" text="LKR 0.00" textFill="#0A192F"><font><Font name="System Bold" size="13.0" /></font></Label></HBox>
+        </VBox>
+
+        <Region VBox.vgrow="ALWAYS" />
+
+        <VBox style="-fx-background-color: #365179; -fx-background-radius: 10; -fx-padding: 20;">
+            <Label text="TOTAL PAYABLE AMOUNT" textFill="#A8B2D1"><font><Font size="11.0" /></font></Label>
+            <Label fx:id="lblOutTotal" text="LKR 0.00" textFill="WHITE"><font><Font name="System Bold" size="28.0" /></font></Label>
+        </VBox>
+    </VBox>
+   <effect>
+      <Blend />
+   </effect>
+</HBox>
